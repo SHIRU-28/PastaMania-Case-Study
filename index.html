@@ -918,6 +918,27 @@
             .doc { border-radius: 14px; }
             .hero, .content, .appendix { padding: 36px 20px; }
 
+            /* ── Hero spotlight mobile fix: center default so flag is visible ── */
+            .hero::before {
+                -webkit-mask-image: radial-gradient(
+                    circle 150px at var(--mx, 50%) var(--my, 50%),
+                    transparent 0%,
+                    transparent 35%,
+                    rgba(0,0,0,0.15) 55%,
+                    black 80%
+                );
+                mask-image: radial-gradient(
+                    circle 150px at var(--mx, 50%) var(--my, 50%),
+                    transparent 0%,
+                    transparent 35%,
+                    rgba(0,0,0,0.15) 55%,
+                    black 80%
+                );
+            }
+            .hero > .hero-spotlight-layer {
+                clip-path: circle(150px at var(--mx, 50%) var(--my, 50%));
+            }
+
             h1 { font-size: 32px; letter-spacing: -0.5px; }
             .hero > .hero-spotlight-layer { padding: 36px 20px; }
             .hero-tagline { font-size: 13px; margin-bottom: 32px; }
@@ -1385,14 +1406,14 @@
     /* ── HERO CURSOR SPOTLIGHT & DYNAMIC TEXT INVERSION ── */
     const hero = document.querySelector('.hero');
     if (hero) {
-        hero.addEventListener('mousemove', (e) => {
+        function updateSpotlight(x, y) {
             const rect = hero.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            hero.style.setProperty('--mx', x + 'px');
-            hero.style.setProperty('--my', y + 'px');
+            const localX = x - rect.left;
+            const localY = y - rect.top;
+            hero.style.setProperty('--mx', localX + 'px');
+            hero.style.setProperty('--my', localY + 'px');
 
-            const pct = x / rect.width;
+            const pct = localX / rect.width;
             let spotlightColor;
             if (pct < 0.3333) {
                 spotlightColor = '#C8102E';
@@ -1402,11 +1423,36 @@
                 spotlightColor = '#FFFFFF';
             }
             hero.style.setProperty('--spotlight-text', spotlightColor);
+        }
+
+        hero.addEventListener('mousemove', (e) => {
+            updateSpotlight(e.clientX, e.clientY);
         });
 
         hero.addEventListener('mouseleave', () => {
             hero.style.setProperty('--mx', '-400px');
             hero.style.setProperty('--my', '-400px');
+        });
+
+        /* ── Mobile touch support for spotlight ── */
+        hero.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            updateSpotlight(touch.clientX, touch.clientY);
+        }, { passive: true });
+
+        hero.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            updateSpotlight(touch.clientX, touch.clientY);
+        }, { passive: true });
+
+        hero.addEventListener('touchend', () => {
+            hero.style.setProperty('--mx', '50%');
+            hero.style.setProperty('--my', '50%');
+        });
+
+        hero.addEventListener('touchcancel', () => {
+            hero.style.setProperty('--mx', '50%');
+            hero.style.setProperty('--my', '50%');
         });
     }
 
