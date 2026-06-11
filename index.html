@@ -675,7 +675,7 @@
         .asset-block { margin-top: 52px; }
         .asset-lbl {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 12px; letter-spacing: 3.5px;
+            font-size: 24px; letter-spacing: 3.5px;
             color: var(--gold);
             display: flex; align-items: center; gap: 14px;
             margin-bottom: 22px;
@@ -914,10 +914,67 @@
            RESPONSIVE
         ══════════════════════════════ */
         @media (max-width: 720px) {
-            .kpi-grid   { grid-template-columns: repeat(2, 1fr); }
-            .combo-grid { grid-template-columns: 1fr; }
-            .hero, .content, .appendix { padding: 40px 24px; }
-            h1 { font-size: 36px; }
+            body { padding: 20px 12px 40px; }
+            .doc { border-radius: 14px; }
+            .hero, .content, .appendix { padding: 36px 20px; }
+
+            h1 { font-size: 32px; letter-spacing: -0.5px; }
+            .hero > .hero-spotlight-layer { padding: 36px 20px; }
+            .hero-tagline { font-size: 13px; margin-bottom: 32px; }
+
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .kpi { padding: 16px 14px; }
+            .kpi-lbl { font-size: 8px; letter-spacing: 2px; }
+            .kpi-val { font-size: 16px; }
+            .kpi-val.hl { font-size: 20px; }
+
+            .badge { font-size: 11px; padding: 6px 14px 6px 10px; margin-bottom: 24px; }
+
+            h2 { font-size: 24px; gap: 10px; margin: 44px 0 16px; }
+            .sec-num { font-size: 10px; padding: 3px 9px; }
+            p { font-size: 14.5px; line-height: 1.75; margin-bottom: 18px; }
+
+            .combo-grid { grid-template-columns: 1fr; gap: 12px; margin: 20px 0; }
+            .combo-card { padding: 18px 18px 18px 20px; }
+            .combo-card strong { font-size: 17px; }
+            .combo-n { font-size: 36px; }
+
+            .tl-item { grid-template-columns: 44px 1fr; }
+            .tl-dot { width: 36px; height: 36px; font-size: 14px; }
+            .tl-body { padding: 2px 0 32px 18px; }
+            .tl-body strong { font-size: 17px; }
+
+            .callout { padding: 24px 24px; margin: 28px 0; }
+            .callout::after { font-size: 160px; bottom: -40px; right: 10px; }
+            .callout p { font-size: 14px; }
+
+            .role-list { gap: 10px; }
+            .role-item { grid-template-columns: 38px 1fr; }
+            .role-num { font-size: 18px; min-height: 52px; }
+            .role-text { padding: 13px 16px; font-size: 13.5px; }
+
+            .asset-lbl { font-size: 20px; letter-spacing: 2.5px; margin-bottom: 16px; }
+            .asset-block { margin-top: 40px; }
+
+            .gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .gallery.sm { grid-template-columns: repeat(2, 1fr); }
+            .card { padding: 6px 6px 14px; }
+            .card-cap { font-size: 11px; }
+
+            .vid .play-btn { width: 60px; height: 60px; }
+            .play-btn::after { border-width: 9px 0 9px 14px; }
+            .vid-meta { padding: 16px 18px; }
+            .vid-meta span { font-size: 14px; letter-spacing: 1.5px; }
+
+            .orn { width: 200px; height: 200px; top: -40px; right: -40px; }
+            .orn-bl { width: 160px; height: 160px; bottom: -60px; left: -60px; }
+
+            .footer { padding: 24px 20px; font-size: 9px; letter-spacing: 3px; margin-top: 36px; }
+
+            .lightbox-container { padding: 30px 60px; gap: 12px; }
+            .lightbox-btn { width: 38px; height: 38px; font-size: 16px; }
+            .lightbox-media img, .lightbox-media svg { max-width: 78vw; max-height: 55vh; }
+            .lightbox-close { top: 12px; right: 12px; }
         }
 
         /* ── LIGHTBOX (Google Drive style) ── */
