@@ -675,7 +675,7 @@
         .asset-block { margin-top: 52px; }
         .asset-lbl {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 24px; letter-spacing: 3.5px;
+            font-size: 22px; letter-spacing: 2.5px;
             color: var(--gold);
             display: flex; align-items: center; gap: 14px;
             margin-bottom: 22px;
@@ -914,88 +914,85 @@
            RESPONSIVE
         ══════════════════════════════ */
         @media (max-width: 720px) {
-            body { padding: 20px 12px 40px; }
-            .doc { border-radius: 14px; }
+            /* Body & wrapper */
+            body { padding: 0 0 40px; }
+            .doc { border-radius: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.10); }
+
+            /* Sections */
             .hero, .content, .appendix { padding: 36px 20px; }
+            /* Fix spotlight layer's own hardcoded padding */
+            .hero > .hero-spotlight-layer { padding: 36px 20px 44px; }
 
-            /* ── Hero spotlight mobile fix: center default so flag is visible ── */
-            .hero::before {
-                -webkit-mask-image: radial-gradient(
-                    circle 150px at var(--mx, 50%) var(--my, 50%),
-                    transparent 0%,
-                    transparent 35%,
-                    rgba(0,0,0,0.15) 55%,
-                    black 80%
-                );
-                mask-image: radial-gradient(
-                    circle 150px at var(--mx, 50%) var(--my, 50%),
-                    transparent 0%,
-                    transparent 35%,
-                    rgba(0,0,0,0.15) 55%,
-                    black 80%
-                );
-            }
-            .hero > .hero-spotlight-layer {
-                clip-path: circle(150px at var(--mx, 50%) var(--my, 50%));
-            }
-
-            h1 { font-size: 32px; letter-spacing: -0.5px; }
-            .hero > .hero-spotlight-layer { padding: 36px 20px; }
+            /* Typography */
+            h1 { font-size: clamp(26px, 8vw, 36px); letter-spacing: -0.5px; }
+            h2 { font-size: 24px; margin: 44px 0 16px; gap: 10px; }
+            h2:first-child { margin-top: 0; }
+            p  { font-size: 14.5px; line-height: 1.75; margin-bottom: 20px; }
             .hero-tagline { font-size: 13px; margin-bottom: 32px; }
 
-            .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            /* KPI grid */
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 9px; }
             .kpi { padding: 16px 14px; }
-            .kpi-lbl { font-size: 8px; letter-spacing: 2px; }
             .kpi-val { font-size: 16px; }
             .kpi-val.hl { font-size: 20px; }
+            .kpi-lbl { font-size: 8px; letter-spacing: 2px; margin-bottom: 6px; }
 
-            .badge { font-size: 11px; padding: 6px 14px 6px 10px; margin-bottom: 24px; }
+            /* Combo grid */
+            .combo-grid { grid-template-columns: 1fr; }
 
-            h2 { font-size: 24px; gap: 10px; margin: 44px 0 16px; }
-            .sec-num { font-size: 10px; padding: 3px 9px; }
-            p { font-size: 14.5px; line-height: 1.75; margin-bottom: 18px; }
-
-            .combo-grid { grid-template-columns: 1fr; gap: 12px; margin: 20px 0; }
-            .combo-card { padding: 18px 18px 18px 20px; }
-            .combo-card strong { font-size: 17px; }
-            .combo-n { font-size: 36px; }
-
+            /* Timeline */
             .tl-item { grid-template-columns: 44px 1fr; }
-            .tl-dot { width: 36px; height: 36px; font-size: 14px; }
-            .tl-body { padding: 2px 0 32px 18px; }
+            .tl-dot { width: 36px; height: 36px; font-size: 15px; }
+            .tl-body { padding: 2px 0 26px 14px; }
             .tl-body strong { font-size: 17px; }
 
-            .callout { padding: 24px 24px; margin: 28px 0; }
-            .callout::after { font-size: 160px; bottom: -40px; right: 10px; }
+            /* Callout */
+            .callout { padding: 24px 20px; margin: 28px 0; }
             .callout p { font-size: 14px; }
 
-            .role-list { gap: 10px; }
-            .role-item { grid-template-columns: 38px 1fr; }
-            .role-num { font-size: 18px; min-height: 52px; }
-            .role-text { padding: 13px 16px; font-size: 13.5px; }
+            /* Role list */
+            .role-text { padding: 12px 16px; font-size: 13.5px; }
 
-            .asset-lbl { font-size: 20px; letter-spacing: 2.5px; margin-bottom: 16px; }
-            .asset-block { margin-top: 40px; }
+            /* Gallery */
+            .gallery { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; }
+            .gallery.sm { grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 8px; }
 
-            .gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .gallery.sm { grid-template-columns: repeat(2, 1fr); }
-            .card { padding: 6px 6px 14px; }
-            .card-cap { font-size: 11px; }
-
-            .vid .play-btn { width: 60px; height: 60px; }
-            .play-btn::after { border-width: 9px 0 9px 14px; }
+            /* Video */
+            .play-btn { width: 60px; height: 60px; }
             .vid-meta { padding: 16px 18px; }
-            .vid-meta span { font-size: 14px; letter-spacing: 1.5px; }
+            .vid-meta span { font-size: 14px; letter-spacing: 2px; }
 
-            .orn { width: 200px; height: 200px; top: -40px; right: -40px; }
-            .orn-bl { width: 160px; height: 160px; bottom: -60px; left: -60px; }
+            /* Asset labels */
+            .asset-lbl { font-size: 18px; letter-spacing: 1.8px; }
+            .asset-block { margin-top: 36px; }
 
-            .footer { padding: 24px 20px; font-size: 9px; letter-spacing: 3px; margin-top: 36px; }
+            /* Footer */
+            .footer { padding: 24px 20px; letter-spacing: 3px; }
 
+            /* Lightbox */
             .lightbox-container { padding: 30px 60px; gap: 12px; }
             .lightbox-btn { width: 38px; height: 38px; font-size: 16px; }
             .lightbox-media img, .lightbox-media svg { max-width: 78vw; max-height: 55vh; }
             .lightbox-close { top: 12px; right: 12px; }
+        }
+
+        @media (max-width: 420px) {
+            body { padding: 0; }
+            .doc { border-radius: 0; }
+            .hero, .content, .appendix { padding: 28px 16px; }
+            .hero > .hero-spotlight-layer { padding: 28px 16px 36px; }
+            h1 { font-size: 26px; }
+            h2 { font-size: 21px; }
+            .kpi-grid { gap: 7px; }
+            .kpi { padding: 14px 12px; }
+            .kpi-val { font-size: 14px; }
+            .kpi-val.hl { font-size: 17px; }
+            .badge { font-size: 10px; padding: 6px 13px 6px 10px; letter-spacing: 2.5px; }
+            .gallery { grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 7px; }
+            .gallery.sm { grid-template-columns: repeat(auto-fill, minmax(68px, 1fr)); gap: 7px; }
+            .asset-lbl { font-size: 17px; letter-spacing: 1.5px; }
+            .lightbox-container { padding: 20px 48px; gap: 8px; }
+            .lightbox-media img, .lightbox-media svg { max-width: 86vw; max-height: 50vh; }
         }
 
         /* ── LIGHTBOX (Google Drive style) ── */
@@ -1136,12 +1133,7 @@
             border-color: rgba(255,255,255,0.5);
             transform: rotate(90deg) scale(1.1);
         }
-        @media (max-width: 720px) {
-            .lightbox-container { padding: 30px 60px; gap: 12px; }
-            .lightbox-btn { width: 38px; height: 38px; font-size: 16px; }
-            .lightbox-media img, .lightbox-media svg { max-width: 78vw; max-height: 55vh; }
-            .lightbox-close { top: 12px; right: 12px; }
-        }
+        
         .lightbox-media video {
             border-radius: 6px;
             background: #000;
@@ -1406,14 +1398,14 @@
     /* ── HERO CURSOR SPOTLIGHT & DYNAMIC TEXT INVERSION ── */
     const hero = document.querySelector('.hero');
     if (hero) {
-        function updateSpotlight(x, y) {
+        hero.addEventListener('mousemove', (e) => {
             const rect = hero.getBoundingClientRect();
-            const localX = x - rect.left;
-            const localY = y - rect.top;
-            hero.style.setProperty('--mx', localX + 'px');
-            hero.style.setProperty('--my', localY + 'px');
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            hero.style.setProperty('--mx', x + 'px');
+            hero.style.setProperty('--my', y + 'px');
 
-            const pct = localX / rect.width;
+            const pct = x / rect.width;
             let spotlightColor;
             if (pct < 0.3333) {
                 spotlightColor = '#C8102E';
@@ -1423,36 +1415,11 @@
                 spotlightColor = '#FFFFFF';
             }
             hero.style.setProperty('--spotlight-text', spotlightColor);
-        }
-
-        hero.addEventListener('mousemove', (e) => {
-            updateSpotlight(e.clientX, e.clientY);
         });
 
         hero.addEventListener('mouseleave', () => {
             hero.style.setProperty('--mx', '-400px');
             hero.style.setProperty('--my', '-400px');
-        });
-
-        /* ── Mobile touch support for spotlight ── */
-        hero.addEventListener('touchstart', (e) => {
-            const touch = e.touches[0];
-            updateSpotlight(touch.clientX, touch.clientY);
-        }, { passive: true });
-
-        hero.addEventListener('touchmove', (e) => {
-            const touch = e.touches[0];
-            updateSpotlight(touch.clientX, touch.clientY);
-        }, { passive: true });
-
-        hero.addEventListener('touchend', () => {
-            hero.style.setProperty('--mx', '50%');
-            hero.style.setProperty('--my', '50%');
-        });
-
-        hero.addEventListener('touchcancel', () => {
-            hero.style.setProperty('--mx', '50%');
-            hero.style.setProperty('--my', '50%');
         });
     }
 
